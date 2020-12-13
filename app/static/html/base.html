@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="{{url_for('static', filename='./img/favicon.ico')}}" />
+    <meta name="description" content="React standalone application"/>
+    
+    <!-- 
+       /$$     /$$   /$$     /$$          
+      | $$    |__/  | $$    | $$          
+     /$$$$$$   /$$ /$$$$$$  | $$  /$$$$$$ 
+    |_  $$_/  | $$|_  $$_/  | $$ /$$__  $$
+      | $$    | $$  | $$    | $$| $$$$$$$$
+      | $$ /$$| $$  | $$ /$$| $$| $$_____/
+      |  $$$$/| $$  |  $$$$/| $$|  $$$$$$$
+       \___/  |__/   \___/  |__/ \_______/
+    -->
+    <title> {% block title %} {% endblock %} </title>
+
+  </head>
+  <body>
+    <!-- <script src="{{url_for('static', filename='./lib/react/babel.min.js')}}"></script>  -->
+    <script src="{{url_for('static', filename='./lib/react/react.production.min.js')}}"></script>
+    <script src="{{url_for('static', filename='./lib/react/react-dom.production.min.js')}}"></script>
+    <script src="{{url_for('static', filename='./lib/react/react-content-loader.min.js')}}"></script>
+    
+    <link rel="stylesheet" href="{{url_for('static', filename='./css/main.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{url_for('static', filename='./lib/icono/css/icono.min.css')}}" type="text/css">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <!-- 
+     /$$                                 /$$                    
+    | $$                                | $$                    
+    | $$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$$  /$$$$$$   /$$$$$$ 
+    | $$__  $$ /$$__  $$ |____  $$ /$$__  $$ /$$__  $$ /$$__  $$
+    | $$  \ $$| $$$$$$$$  /$$$$$$$| $$  | $$| $$$$$$$$| $$  \__/
+    | $$  | $$| $$_____/ /$$__  $$| $$  | $$| $$_____/| $$      
+    | $$  | $$|  $$$$$$$|  $$$$$$$|  $$$$$$$|  $$$$$$$| $$      
+    |__/  |__/ \_______/ \_______/ \_______/ \_______/|__/      
+
+    -->
+    <div id="app-navbar">Loading navbar...</div>
+
+    <!-- 
+                                     /$$                           /$$    
+                                    | $$                          | $$    
+      /$$$$$$$  /$$$$$$  /$$$$$$$  /$$$$$$    /$$$$$$  /$$$$$$$  /$$$$$$  
+     /$$_____/ /$$__  $$| $$__  $$|_  $$_/   /$$__  $$| $$__  $$|_  $$_/  
+    | $$      | $$  \ $$| $$  \ $$  | $$    | $$$$$$$$| $$  \ $$  | $$    
+    | $$      | $$  | $$| $$  | $$  | $$ /$$| $$_____/| $$  | $$  | $$ /$$
+    |  $$$$$$$|  $$$$$$/| $$  | $$  |  $$$$/|  $$$$$$$| $$  | $$  |  $$$$/
+     \_______/ \______/ |__/  |__/   \___/   \_______/|__/  |__/   \___/  
+    -->
+    <main>
+      {% block content %} {% endblock %}
+    </main>
+    
+    
+    <!-- 
+      /$$$$$$                      /$$                        
+     /$$__  $$                    | $$                        
+    | $$  \__//$$$$$$   /$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$ 
+    | $$$$   /$$__  $$ /$$__  $$|_  $$_/   /$$__  $$ /$$__  $$
+    | $$_/  | $$  \ $$| $$  \ $$  | $$    | $$$$$$$$| $$  \__/
+    | $$    | $$  | $$| $$  | $$  | $$ /$$| $$_____/| $$      
+    | $$    |  $$$$$$/|  $$$$$$/  |  $$$$/|  $$$$$$$| $$      
+    |__/     \______/  \______/    \___/   \_______/|__/      
+    -->
+    <div id="app-footer">Footer Loading...</div>
+
+    <script type="text/javascript" src="{{url_for('static', filename='js/navbar.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/footer.js')}}"></script>
+    <!-- 
+                                   /$$             /$$             
+                                  |__/            | $$             
+      /$$$$$$$  /$$$$$$$  /$$$$$$  /$$  /$$$$$$  /$$$$$$   /$$$$$$$
+     /$$_____/ /$$_____/ /$$__  $$| $$ /$$__  $$|_  $$_/  /$$_____/
+    |  $$$$$$ | $$      | $$  \__/| $$| $$  \ $$  | $$   |  $$$$$$ 
+     \____  $$| $$      | $$      | $$| $$  | $$  | $$ /$$\____  $$
+     /$$$$$$$/|  $$$$$$$| $$      | $$| $$$$$$$/  |  $$$$//$$$$$$$/
+    |_______/  \_______/|__/      |__/| $$____/    \___/ |_______/ 
+                                      | $$                         
+                                      | $$                         
+                                      |__/      
+    -->
+    {% block scripts %} {% endblock %}
+  </body>
+</html>

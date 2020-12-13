@@ -1,0 +1,61 @@
+
+.led {
+  $led-colors: (
+    /*map name      color     hor_len vert_len blur_rad spread */
+    "red":        #dd222c,
+    "red-glow":   #c53a41   0px     0px      5px      1px, 
+    "orange":     #E88F40,
+    "orange-glow":#d48a49   0px     0px      5px      1px,
+    "green":      #86D253,
+    "green-glow": #81c057   0px     0px      5px      1px,
+    "gray":       silver,
+    "gray-glow":  transparent,
+    "blue":       #3f3ddb,
+    "blue-glow":  #5250d3   0px     0px      5px      1px,
+  );
+  $led-radius: 20px;
+
+  @function get-color($color){
+    @return map-get($led-colors, $color);
+  }
+
+  height: $led-radius;
+  width:  $led-radius;
+  margin: $led-radius/5;
+  border-radius: 50%;
+  display: inline-block;
+
+  // &:hover{
+  //   background-color: white;
+  // };
+  &-red {
+    @extend .led;
+    background-color: get-color("red");
+    box-shadow:       get-color("red-glow");
+    @include keyframes(blink-red) {
+      @include blink(
+        $fadein-col:     get-color("red"),
+        $fadeout-col:    get-color("orange"),
+        $fadein-shadow:  get-color("red-glow"),
+        $fadeout-shadow: get-color("orange-glow"),
+        $fadein-perc:    20%        
+      );
+    }
+    @include animate(blink-red, 5s, $iteration: infinite);
+  };
+  &-green {
+    @extend .led;
+    background-color: get-color("green");
+    box-shadow:       get-color("green-glow");
+  };
+  &-gray {
+    @extend .led;
+    background-color: get-color("gray");
+    box-shadow:       get-color("gray-glow");
+  };
+  &-blue {
+    @extend .led;
+    background-color: get-color("blue");
+    box-shadow:       get-color("blue-glow");
+  };
+}

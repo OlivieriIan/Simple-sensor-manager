@@ -1,0 +1,33 @@
+
+.hover-pulse-effect { 
+  $button-col:          #ffa260;
+  $hover-col:             adjust-hue($button-col, 45deg);
+  $hover-transition-time: 0.25s;
+
+  color:      $button-col;
+  background: transparent;
+  border:     2px solid;
+  margin:     0px;
+
+  &:not(:focus){ // Avoid breaking focus animation when hover out
+    transition:   $hover-transition-time;
+  }
+
+  &:hover{
+    transition:   $hover-transition-time;
+    color:        $hover-col;
+    border-color: $hover-col;
+    box-shadow:   0 0 2px 1px $hover-col;
+  }
+
+  &:focus {
+    @keyframes pulse-out {
+      0% { box-shadow: 0 0 0 0 $hover-col; }
+    }
+    color:        $hover-col;
+    border-color: $hover-col;
+    animation:    pulse-out 1s ease-out;
+    box-shadow:   0 0 0 10px rgba(#fff,0);
+  }
+}
+

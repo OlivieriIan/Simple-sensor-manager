@@ -1,0 +1,101 @@
+// https://brandonbrule.github.io/scss-animation-keyframe-mixin/
+// https://mrpapercut.com/blog/2016-09-26-keyframe-animations-in-sass
+
+@mixin transition-ease {
+  transition: all 0.5s ease-in-out;
+}
+
+@mixin keyframes($name)
+{
+  @-webkit-keyframes #{$name} { @content; }
+     @-moz-keyframes #{$name} { @content; }
+      @-ms-keyframes #{$name} { @content; }
+       @-o-keyframes #{$name} { @content; }
+          @keyframes #{$name} { @content; }
+}
+
+@mixin animate(
+  $name, //animation's keyframes name
+  $duration, // animation duration in seconds. Example: 1s
+  $iteration:1, // number of animation iterations. infinite is a valid value
+  $direction: ltr, // text direction within a block-level element. Values: ltr, rtl, initial, inherit
+  $fillmode: none, // style for the element when the animation is not playing. Values: none, forwards, backwards, both, initial, inherit
+  $timing: ease // speed curve of the animation. values: linear, ease, ... 
+){
+  // -webkit-animation-name: $name;
+  //    -moz-animation-name: $name;
+  //     -ms-animation-name: $name;
+  //      -o-animation-name: $name;
+          animation-name: $name;
+  // -webkit-animation-duration: $duration;
+  //    -moz-animation-duration: $duration;
+  //     -ms-animation-duration: $duration;
+  //      -o-animation-duration: $duration;
+          animation-duration: $duration;
+  // -webkit-animation-iteration-count: $iteration;
+  //    -moz-animation-iteration-count: $iteration;
+  //     -ms-animation-iteration-count: $iteration;
+  //      -o-animation-iteration-count: $iteration;
+          animation-iteration-count: $iteration;
+  // -webkit-animation-direction: $direction;
+  //    -moz-animation-direction: $direction;
+  //     -ms-animation-direction: $direction;
+  //      -o-animation-direction: $direction;
+          animation-direction: $direction;
+  // -webkit-animation-fill-mode: $fillmode;
+  //    -moz-animation-fill-mode: $fillmode;
+  //     -ms-animation-fill-mode: $fillmode;
+  //      -o-animation-fill-mode: $fillmode;
+          animation-fill-mode: $fillmode;
+  // -webkit-animation-timing-function: $timing;
+  //    -moz-animation-timing-function: $timing;
+  //     -ms-animation-timing-function: $timing;
+  //      -o-animation-timing-function: $timing;         
+          animation-timing-function: $timing;
+}
+
+/* ----------------------------------------------------- */
+/* blink example:
+ *  @include keyframes(myBlink) {
+      @include blink(
+        $fadein-col:     magenta,
+        $fadeout-col:    yellow,
+        $fadein-shadow:  black 0 0 5px 1px,
+        $fadeout-shadow: blue 0 0 5px 1px,
+        $fadein-perc:    40%        
+      );
+    }
+    @include animate(myBlink, 2s, infinite);
+ */
+@mixin blink ($fadein-col, $fadeout-col, $fadein-shadow: null, $fadeout-shadow: null, $fadein-perc:50%){
+  from {
+    background-color: $fadeout-col;
+    box-shadow: $fadeout-shadow; 
+  }
+
+  @if ($fadein-perc > 50) {
+    $fadein-perc: 50;
+  }
+  #{$fadein-perc} {
+    background-color: $fadein-col;
+    box-shadow: $fadein-shadow;
+  }
+  #{100% - $fadein-perc} {
+    background-color: $fadein-col;
+    box-shadow: $fadein-shadow;
+  }
+  to {
+    background-color: $fadeout-col;
+    box-shadow: $fadeout-shadow;
+  }
+}
+
+/* ----------------------------------------------------- */
+@include keyframes(spin-cw) {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@include keyframes(spin-ccw) {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
