@@ -19,7 +19,7 @@ pip install requests
 ## Usage
 1) Launch /app/app.py  This will initialise the web server.
 2) Then run the desired sensors with /sensor/sensor_web.bat (for Windows)    You'll be prompted to enter the sensor number, which can be 1, 2, 3, etc.
-3) Finally, go to localhost:5000/ and you should see the home page, with the loaded sensors updating every 500ms
+3) Finally, go to http://localhost:5000/ and you should see the home page, with the loaded sensors updating every 500ms
 
 ## Modification
 This project was made using 
