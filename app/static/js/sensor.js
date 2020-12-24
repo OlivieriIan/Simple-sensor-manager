@@ -126,7 +126,7 @@ var SensorManager = function (_React$Component) {
     value: function update() {
       var _this2 = this;
 
-      fetch("http://localhost:5000/data/fast").then(function (response) {
+      fetch("http://localhost:5000/data").then(function (response) {
         return response.json();
       }).then(function (res) {
         return _this2.setState({ isLoading: false, data: res });

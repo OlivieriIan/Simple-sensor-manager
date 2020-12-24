@@ -57,7 +57,7 @@ class SensorManager extends React.Component {
   };
 
   update() {
-    fetch("http://localhost:5000/data/fast")
+    fetch("http://localhost:5000/data")
     .then(response => response.json())
     .then(res => this.setState({ isLoading: false,  data: res}))
     .catch(error => this.setState({ error, isLoading: false }));

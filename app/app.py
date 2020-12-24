@@ -3,6 +3,7 @@ import requests
 import logging # Disable GET/POST messages in console
 import os, sys
 import random
+import socket
 
 app = Flask(__name__, template_folder="static")
 
@@ -60,8 +61,18 @@ def data_fast():
 def page_not_found(e):
     return redirect("/home", code=302)
 
+def get_ip_address():
+  ## getting the hostname by socket.gethostname() method
+  hostname = socket.gethostname()
+  ## getting the IP address using socket.gethostbyname() method
+  ip_address = socket.gethostbyname(hostname)
+  ## printing the hostname and ip_address
+  print(f"Hostname: {hostname}")
+  print(f"IP Address: {ip_address}")
+
 if __name__ == "__main__":
   # Disable .. "GET /status HTTP/1.1" 200 ... logs
+  get_ip_address()
   print("Launching Flask Server")
   log = logging.getLogger("werkzeug")
   log.disabled = True
@@ -70,3 +81,4 @@ if __name__ == "__main__":
   # from livereload import Server
   # server = Server(app.wsgi_app)
   # server.serve(port=5000)
+

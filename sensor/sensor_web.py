@@ -6,6 +6,8 @@ import random
 app = Flask(__name__)
 
 argv_num = int(sys.argv[1])
+if argv_num < 1:
+  argv_num = 1
 sensor_name = "sensor_{:03d}".format(argv_num)
 server_port = 5000 + argv_num
 
